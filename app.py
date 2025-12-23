@@ -22,7 +22,7 @@ with tab1:
 
 with tab2:
     st.title("For Trader 📊")
-    
+    st.title("SP&500")
     # Ваши новые поля для трейдинга
     risk = st.number_input("Сумма риска ($)", value=0.0, key="trade_risk")
     stop = st.number_input("Стоп-лосс (пункты)", value=0.0, key="trade_stop")
@@ -33,3 +33,4 @@ with tab2:
             st.info(f"Рекомендуемый лот: {lot}")
         else:
             st.error("Стоп-лосс должен быть больше нуля!")
+
