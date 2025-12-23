@@ -9,29 +9,44 @@ with tab1:
     operation = st.selectbox(
         "Выберите операцию:",
         ["Найти % от числа", "Прибавить % к числу", "Вычесть % из числа"],
-        key="calc_op"  # Уникальный ключ для списка на 1-й вкладке
+        key="calc_op"
     )
     
     number = st.number_input("Введите число", value=0.0, key="calc_num")
     percent = st.number_input("Введите процент", value=0.0, key="calc_perc")
     
     if st.button("Рассчитать", key="calc_btn"):
-        # Тут ваша логика расчёта процентов (if/elif)
-        # Не забудьте про отступы внутри этого блока!
-        pass 
+        if operation == "Найти % от числа":
+            result = (number * percent) / 100
+            st.success(f"Результат: {result}")
+        elif operation == "Прибавить % к числу":
+            result = number + (number * percent) / 100
+            st.success(f"Итоговая сумма: {result}")
+        elif operation == "Вычесть % из числа":
+            result = number - (number * percent) / 100
+            st.success(f"Цена со скидкой: {result}")
 
 with tab2:
-    st.title("For Trader 📊")
+    st.title("Trading Tools 📊")
     
-    # Ваши новые поля для трейдинга
+    # Выбор инструмента внутри вкладки
+    symbol = st.selectbox(
+        "Выберите торговый инструмент:",
+        ["S&P 500", "Forex", "Crypto"],
+        key="trade_symbol"
+    )
+    
     risk = st.number_input("Сумма риска ($)", value=0.0, key="trade_risk")
-    stop = st.number_input("Стоп-лосс (пункты)", value=0.0, key="trade_stop")
     
-    if st.button("Посчитать лот", key="trade_btn"):
-        if stop > 0:
-            lot = risk / stop
-            st.info(f"Рекомендуемый лот: {lot}")
-        else:
-            st.error("Стоп-лосс должен быть больше нуля!")
-
-
+    if symbol == "S&P 500":
+        stop = st.number_input("Стоп-лосс (пункты)", value=0.0, key="sp500_stop")
+        
+        if st.button("Посчитать лот для S&P 500", key="sp_btn"):
+            if stop > 0:
+                lot = risk / stop
+                st.info(f"Рекомендуемый лот для S&P 500: {lot}")
+            else:
+                st.error("Стоп-лосс должен быть больше нуля!")
+                
+    else:
+        st.write(f"Раздел для {symbol} в разработке... 🏗️")
