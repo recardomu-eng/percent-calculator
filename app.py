@@ -44,8 +44,4 @@ with tab1:
         if operation == "Найти % от числа":
             result = (number * percent) / 100
             st.success(f"Результат: {result}")
-        # ... и так далее для всех elif ...
-
-
-
-
+        # ... и так далее для всех elif ...     
