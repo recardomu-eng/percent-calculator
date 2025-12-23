@@ -85,12 +85,13 @@ with tab2:
             else:
                 st.error("Введите размер стоп-лосса!")
                 st.info(f"Сумма риска: ${risk_sum:.2f}")
-                if risk_percent > 3.0:
+            if risk_percent > 3.0:
                     st.error(f"⚠️ Слишком высокий риск ({risk_percent}%)!")
                     
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал @Durik66.")
+
 
 
 
