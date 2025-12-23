@@ -84,9 +84,14 @@ with tab2:
                 st.metric(label="Рекомендуемый лот (Standard)", value=f"{lot:.2f}")
             else:
                 st.error("Введите размер стоп-лосса!")
+                st.info(f"Сумма риска: ${risk_sum:.2f}")
+                if risk_percent > 3.0:
+                    st.error(f"⚠️ Слишком высокий риск ({risk_percent}%)!")
+                    
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
-st.sidebar.write("Этот калькулятор создал Durik66.")
+st.sidebar.write("Этот калькулятор создал @Durik66.")
+
 
 
 
