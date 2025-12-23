@@ -68,7 +68,7 @@ with tab2:
                 st.error("Стоп-лосс должен быть больше нуля!")
 
     # 2. Новая логика для EUR/USD
-   elif symbol == "EUR/USD":
+    elif symbol == "EUR/USD":
         stop_pips = st.number_input("Стоп-лосс (в пипсах)", value=0.0, key="eurusd_stop")
         
         if st.button("Посчитать лот для EUR/USD", key="eurusd_btn"):
@@ -92,6 +92,7 @@ with tab2:
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал @Durik66.")
+
 
 
 
