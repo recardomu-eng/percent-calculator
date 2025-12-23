@@ -74,7 +74,8 @@ with tab2:
         if st.button("Посчитать лот для EUR/USD", key="eurusd_btn"):
             if stop_pips > 0:
                 risk_sum = deposit * (risk_percent / 100)
-                    
+                
+                st.info(f"Сумма риска: ${risk_sum:.2f}")   
                 if risk_percent > 3.0:
                     st.error(f"⚠️ Слишком высокий риск ({risk_percent}%)!")  
                 # Формула для Forex: Сумма риска / (Стоп в пунктах * Стоимость пункта)
@@ -90,6 +91,7 @@ with tab2:
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал @Durik66.")
+
 
 
 
