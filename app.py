@@ -68,29 +68,31 @@ with tab2:
                 st.error("Стоп-лосс должен быть больше нуля!")
 
     # 2. Новая логика для EUR/USD
-    elif symbol == "EUR/USD":
-        stop_pips = st.number_input("Стоп-лосс (в пипсах/пунктах, например 20)", value=0.0, key="eurusd_stop")
+   elif symbol == "EUR/USD":
+        stop_pips = st.number_input("Стоп-лосс (в пипсах)", value=0.0, key="eurusd_stop")
         
         if st.button("Посчитать лот для EUR/USD", key="eurusd_btn"):
             if stop_pips > 0:
                 risk_sum = deposit * (risk_percent / 100)
                 
-                st.info(f"Сумма риска: ${risk_sum:.2f}")   
-                if risk_percent > 3.0:
-                    st.error(f"⚠️ Слишком высокий риск ({risk_percent}%)!")  
-                # Формула для Forex: Сумма риска / (Стоп в пунктах * Стоимость пункта)
-                # Для EUR/USD стоимость пункта при лоте 1.0 равна $10
-                lot = risk_sum / (stop_pips * 10)
-                
+                # Сначала выводим сумму риска
                 st.info(f"Сумма риска: ${risk_sum:.2f}")
-                st.success(f"✅ Для EUR/USD при стопе в {stop_pips} п.")
+                
+                # 1. Добавляем проверку высокого риска (как в S&P 500)
+                if risk_percent > 3.0:
+                    st.error(f"⚠️ Слишком высокий риск ({risk_percent}%)!")
+                else:
+                    st.success(f"✅ Риск в норме ({risk_percent}%)")
+
+                # 2. Считаем и выводим лот
+                lot = risk_sum / (stop_pips * 10)
                 st.metric(label="Рекомендуемый лот (Standard)", value=f"{lot:.2f}")
             else:
                 st.error("Введите размер стоп-лосса!")
-                st.info(f"Сумма риска: ${risk_sum:.2f}")
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал @Durik66.")
+
 
 
 
