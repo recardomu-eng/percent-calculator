@@ -53,7 +53,7 @@ with tab2:
         # 3. Поле для ввода стоп-лосса остается
         stop = st.number_input("Стоп-лосс (пункты)", value=0.0, key="sp500_stop")
         
-     if st.button("Посчитать лот для S&P 500", key="sp_btn"):
+ if st.button("Посчитать лот для S&P 500", key="sp_btn"):
             if stop > 0:
                 # Расчет
                 risk_sum = deposit * (risk_percent / 100)
@@ -79,6 +79,7 @@ with tab2:
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал Durik66.")
+
 
 
 
