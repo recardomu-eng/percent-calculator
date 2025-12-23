@@ -9,5 +9,7 @@ if st.button("Рассчитать"):
     result = (number * percent) / 100
 
     st.success(f"Результат: {percent}% от {number} равно {result}")
+st.sidebar.header("О проекте ℹ️")
+st.sidebar.write("Этот калькулятор создал In$Aide$4.")
 
 
