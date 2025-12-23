@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("Калькулятор святика 🧮")
+st.title("Калькулятор 卍卍卍卍卍 🧮")
 
 number = st.number_input("Введите число", value=0.0)
 percent = st.number_input("Введите процент", value=0.0)
@@ -9,3 +9,4 @@ if st.button("Рассчитать"):
     result = (number * percent) / 100
 
     st.success(f"Результат: {percent}% от {number} равно {result}")
+
