@@ -12,15 +12,16 @@ if st.button("Рассчитать"):
    if operation == "Найти % от числа":
         result = (number * percent) / 100
         st.success(f"Результат: {result}")
-    elif operation == "Прибавить % к числу":
+   elif operation == "Прибавить % к числу":
         result = number + (number * percent) / 100
         st.success(f"Итоговая сумма: {result}")
-    elif operation == "Вычесть % из числа":
+   elif operation == "Вычесть % из числа":
         result = number - (number * percent) / 100
         st.success(f"Цена со скидкой: {result}")
         
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал In$Aide$4.")
+
 
 
 
