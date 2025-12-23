@@ -20,7 +20,8 @@ if st.button("Рассчитать"):
         st.success(f"Цена со скидкой: {result}")
         
 st.sidebar.header("О проекте ℹ️")
-st.sidebar.write("Этот калькулятор создал In$Aide$4.")
+st.sidebar.write("Этот калькулятор создал Durik66.")
+
 
 
 
