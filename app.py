@@ -32,7 +32,7 @@ with tab2:
     # 1. Выбор инструмента (убрали Крипто, добавили EUR/USD)
     symbol = st.selectbox(
         "Выберите торговый инструмент:",
-        ["S&P 500", "EUR/USD"],
+        ["S&P 500", "EUR/USD", "NASDAQ"],
         key="trade_symbol"
     )
     
@@ -67,6 +67,32 @@ with tab2:
             else:
                 st.error("Стоп-лосс должен быть больше нуля!")
 
+    elif symbol == "NASDAQ":
+        # Поле ввода стоп-лосса (в пунктах цены, например, 50.0)
+        stop = st.number_input("Стоп-лосс (пункты цены)", value=0.0, key="nasdaq_stop", help="Разница между ценой входа и стоп-лоссом")
+        
+        if st.button("Посчитать лот для NASDAQ", key="nas_btn"):
+            if stop > 0:
+                # Считаем сумму, которой рискуем
+                risk_sum = deposit * (risk_percent / 100)
+                
+                # Расчет лота: Риск / Стоп-лосс
+                # У большинства брокеров 1 лот индекса = $1 за 1 пункт
+                lot = risk_sum / stop
+                
+                # Вывод результатов
+                st.info(f"Сумма риска: ${risk_sum:.2f}")
+                
+                if risk_percent > 3.0:
+                    st.error(f"⚠️ Слишком высокий риск ({risk_percent}%)!")
+                else:
+                    st.success(f"✅ Риск в норме ({risk_percent}%)")
+                
+                st.metric(label="Рекомендуемый лот", value=f"{lot:.4f}")
+            else:
+                st.error("Стоп-лосс должен быть больше нуля!")
+
+    
     # 2. Новая логика для EUR/USD
     elif symbol == "EUR/USD":
         stop_pips = st.number_input("Стоп-лосс (в пипсах)", value=0.0, key="eurusd_stop")
@@ -92,6 +118,7 @@ with tab2:
 # Общая боковая панель для всего приложения
 st.sidebar.header("О проекте ℹ️")
 st.sidebar.write("Этот калькулятор создал @Durik66.")
+
 
 
 
